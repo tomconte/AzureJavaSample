@@ -7,6 +7,8 @@ import org.azurejava.sample.model.DisplayAlbum;
 import org.hibernate.Session;
 
 public class AlbumService {
+	protected static final String BLOB_HOST_NAME = "http://tcontepub.blob.core.windows.net/";
+	protected static final String BLOB_CONTAINER_NAME = "ledzep";
 	
 	public List<DisplayAlbum> getAlbumsForArtist(String artistName) {
 		List<DisplayAlbum> displayAlbums = new ArrayList<DisplayAlbum>();
@@ -20,11 +22,11 @@ public class AlbumService {
         	Album a = (Album)albums.get(i);
         	
         	String blobName = a.getTitle() + ".jpg";
-        	String containerName = "ledzep";
+        	String containerName = BLOB_CONTAINER_NAME;
         	String img = null;
         	
         	if (BlobUtil.blobExists(containerName, blobName)) {
-            	img = "http://tcontepub.blob.core.windows.net/" + containerName + "/" + blobName;
+            	img = BLOB_HOST_NAME + containerName + "/" + blobName;
         	}
 
         	DisplayAlbum da = new DisplayAlbum();
