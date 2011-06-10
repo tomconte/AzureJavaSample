@@ -1,0 +1,26 @@
+#albums
+{
+	width: 384px;
+	margin: 0 auto;
+}
+
+#containers
+{
+	background-color: #80FFFF;
+	width: 512px;
+	margin: 0 auto;
+}
+
+.albumcover
+{
+	width: 256px;
+}
+
+.album
+{
+	background-color: lightgray;
+	margin: 16px;
+	padding: 8px;
+	text-align: center;
+	font-family: sans-serif;
+}

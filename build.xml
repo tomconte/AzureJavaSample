@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     May 17, 2011 3:13:09 PM                                                        
+
+     test project    
+     testing deployment to windows azure
+                   
+     tconte                                                                
+     ====================================================================== -->
+<project name="project" basedir="." default="deploy">
+	<property name="warfile" value="foo" />
+    <target name="deploy">
+		<war destfile="${warfile}.war" webxml="WebContent/WEB-INF/web.xml" update="true">
+			<classes dir="build\classes"/>
+			<fileset dir="WebContent">
+				<exclude name="WEB-INF/web.xml"/>
+			</fileset>
+		</war>
+    </target>
+</project>
