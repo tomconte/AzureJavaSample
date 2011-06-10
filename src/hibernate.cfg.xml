@@ -17,9 +17,6 @@
 		<!--<property name="connection.url">jdbc:sqlserver://YOURSERVER.database.windows.net:1433;databaseName=Chinook</property>-->
 		<!--<property name="connection.username">YOURLOGIN@YOURSERVER</property>-->
 		<!--<property name="connection.password">YOURPASSWORD</property>-->
-		<property name="connection.url">jdbc:sqlserver://mgmpefw7c7.database.windows.net:1433;databaseName=Chinook</property>
-		<property name="connection.username">tom@mgmpefw7c7</property>
-		<property name="connection.password">toto123!</property>
 
         <!-- JDBC connection pool (use C3P0) -->
 		<property name="hibernate.c3p0.min_size">5</property>
