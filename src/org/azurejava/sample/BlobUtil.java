@@ -7,8 +7,8 @@ import org.soyatec.windowsazure.blob.*;
 
 public class BlobUtil {
 	  //protected static final String BLOB_HOST_NAME      = "http://blob.core.windows.net/";
-	  //protected static final String AZURE_ACCOUNT_NAME  = "tcontepub";
-	  //protected static final String AZURE_ACCOUNT_KEY   = "wbhiBBPzQ1ExHUHuYpOzL1mIMvvyr4fSxNfwcOL0F12RfMAOheH87HMgl9vG1rNRaJpOLPehpN7sSO2UjUuqeQ==";
+	  //protected static final String AZURE_ACCOUNT_NAME  = "YOURACCOUNT";
+	  //protected static final String AZURE_ACCOUNT_KEY   = "YOURKEY";
 	  //protected static final boolean PATH_STYLE_URIS	= false;
 	  protected static final String BLOB_HOST_NAME      = "http://127.0.0.1:10000/";
 	  protected static final String AZURE_ACCOUNT_NAME  = "devstoreaccount1";
