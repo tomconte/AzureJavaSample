@@ -3,45 +3,54 @@ package org.azurejava.sample;
 import java.net.URI;
 import java.util.List;
 
-import org.soyatec.windowsazure.blob.*;
+import com.microsoft.windowsazure.services.core.storage.*;
+import com.microsoft.windowsazure.services.blob.client.*;
 
 public class BlobUtil {
-	  //protected static final String BLOB_HOST_NAME      = "http://blob.core.windows.net/";
-	  //protected static final String AZURE_ACCOUNT_NAME  = "YOURACCOUNT";
-	  //protected static final String AZURE_ACCOUNT_KEY   = "YOURKEY";
-	  //protected static final boolean PATH_STYLE_URIS	= false;
-	  protected static final String BLOB_HOST_NAME      = "http://127.0.0.1:10000/";
-	  protected static final String AZURE_ACCOUNT_NAME  = "devstoreaccount1";
-	  protected static final String AZURE_ACCOUNT_KEY   = "Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==";
-	  protected static final boolean PATH_STYLE_URIS	= true;
+    public static final String storageConnectionString =
+            "DefaultEndpointsProtocol=http;"
+            + "AccountName=your_account_name;"
+            + "AccountKey= your_account_key";
 	  
 	  public static String listContainers() {
-		  BlobStorageClient storageClient = BlobStorageClient.create(
-				  URI.create(BLOB_HOST_NAME), 
-				  PATH_STYLE_URIS, 
-				  AZURE_ACCOUNT_NAME, 
-				  AZURE_ACCOUNT_KEY);
-		  
-		  List<IBlobContainer> listBlobContainers = storageClient.listBlobContainers();
+          CloudStorageAccount account;
+          CloudBlobClient serviceClient;
 
 		  String bar = "";
 		  
-		  for (IBlobContainer objBlobContainer : listBlobContainers ) {
-	            bar += objBlobContainer.getName() + "<br />";
-		  }
-		  
+          try {
+	          account = CloudStorageAccount.parse(storageConnectionString);
+	          serviceClient = account.createCloudBlobClient();
+	          // Container name must be lower case.
+	          Iterable<CloudBlobContainer> listBlobContainers = serviceClient.listContainers();
+	
+			  for (CloudBlobContainer objBlobContainer : listBlobContainers ) {
+		            bar += objBlobContainer.getName() + "<br />";
+			  }
+          } catch (Exception e) {
+        	  System.out.print("Exception encountered: ");
+              System.out.println(e.getMessage());
+          }
+          
 		  return bar;
 	  }
 	  
 	  public static boolean blobExists(String containerName, String blobName) {
-		  BlobStorageClient storageClient = BlobStorageClient.create(
-				  URI.create(BLOB_HOST_NAME),
-				  PATH_STYLE_URIS,
-				  AZURE_ACCOUNT_NAME,
-				  AZURE_ACCOUNT_KEY);
-		  
-		  IBlobContainer container = storageClient.getBlobContainer(containerName);
-		  
-		  return container.isBlobExist(blobName);
+          CloudStorageAccount account;
+          CloudBlobClient serviceClient;
+          CloudBlockBlob blob;
+          
+          try {
+	          account = CloudStorageAccount.parse(storageConnectionString);
+	          serviceClient = account.createCloudBlobClient();
+			  CloudBlobContainer container = serviceClient.getContainerReference(containerName);
+			  blob = container.getBlockBlobReference(blobName);
+			  return true;
+          } catch (Exception e) {
+        	  System.out.print("Exception encountered: ");
+              System.out.println(e.getMessage());
+          }
+          
+		  return false;
 	  }
 }
