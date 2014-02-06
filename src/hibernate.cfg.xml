@@ -9,14 +9,14 @@
         <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
 
         <!-- Local database settings (e.g. SQL Express) -->
-        <property name="connection.url">jdbc:sqlserver://localhost:1433;databaseName=Chinook;</property>
-		<property name="connection.username">sa</property>
-        <property name="connection.password">Pass123!</property>
+        <!-- <property name="connection.url">jdbc:sqlserver://localhost:1433;databaseName=Chinook;</property>-->
+		<!-- <property name="connection.username">sa</property>-->
+        <!-- <property name="connection.password">Pass123!</property>-->
 
         <!-- SQL Azure connection settings -->
-		<!--<property name="connection.url">jdbc:sqlserver://YOURSERVER.database.windows.net:1433;databaseName=Chinook</property>-->
-		<!--<property name="connection.username">YOURLOGIN@YOURSERVER</property>-->
-		<!--<property name="connection.password">YOURPASSWORD</property>-->
+		<property name="connection.url">jdbc:sqlserver://isllu76okc.database.windows.net:1433;database=chinook;encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;</property>
+		<property name="connection.username">tom@isllu76okc</property>
+		<property name="connection.password">Pass123!</property>
 
         <!-- JDBC connection pool (use C3P0) -->
 		<property name="hibernate.c3p0.min_size">5</property>

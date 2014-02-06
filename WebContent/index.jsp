@@ -1,6 +1,8 @@
+<%@page import="java.sql.Blob"%>
 <%@page import="java.util.*"%>
+<%@page import="org.azurejava.sample.*"%>
 <%@page import="org.azurejava.sample.model.*"%>
-<%@ page language="java" %>
+<%@page language="java" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,12 +21,16 @@
 		DisplayAlbum a = i.next();
 %>
 	<div class="album">
-		<div><%= a.getCover() != null ? "<img class=\"albumcover\" src=\"" + a.getCover() + "\">" : "" %></div>
+		<div><%= a.hasCover() ? "<img class=\"albumcover\" src=\"" + a.getCover() + "\">" : "(no cover image)" %></div>
 		<div><%= a.getTitle() %></div>
 	</div>
 <%
 	}
 %>
+</div>
+
+<div>
+<%= BlobUtil.listContainers()  %>
 </div>
 
 </body>

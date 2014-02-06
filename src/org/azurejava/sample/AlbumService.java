@@ -17,9 +17,10 @@ public class AlbumService {
     	
         session.beginTransaction();
 
-		List albums = session.createQuery("from Album a where a.artist.name='" + artistName + "'").list();
+		@SuppressWarnings("unchecked")
+		List<Album> albums = session.createQuery("from Album a where a.artist.name='" + artistName + "'").list();
         for (int i=0; i < albums.size(); i++) {
-        	Album a = (Album)albums.get(i);
+        	Album a = albums.get(i);
         	
         	String blobName = a.getTitle() + ".jpg";
         	String containerName = BLOB_CONTAINER_NAME;
@@ -34,6 +35,7 @@ public class AlbumService {
         	da.setAlbumId(a.getAlbumId());
         	if (img != null) {
         		da.setCover(img);
+        		da.setHasCover(true);
         	}
         	displayAlbums.add(da);
         }

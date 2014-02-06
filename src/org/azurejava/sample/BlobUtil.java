@@ -1,16 +1,13 @@
 package org.azurejava.sample;
 
-import java.net.URI;
-import java.util.List;
-
 import com.microsoft.windowsazure.services.core.storage.*;
 import com.microsoft.windowsazure.services.blob.client.*;
 
 public class BlobUtil {
     public static final String storageConnectionString =
-            "DefaultEndpointsProtocol=http;"
-            + "AccountName=your_account_name;"
-            + "AccountKey= your_account_key";
+            "DefaultEndpointsProtocol=https;"
+            + "AccountName=tcontepub;"
+            + "AccountKey=wbhiBBPzQ1ExHUHuYpOzL1mIMvvyr4fSxNfwcOL0F12RfMAOheH87HMgl9vG1rNRaJpOLPehpN7sSO2UjUuqeQ==";
 	  
 	  public static String listContainers() {
           CloudStorageAccount account;
@@ -45,7 +42,7 @@ public class BlobUtil {
 	          serviceClient = account.createCloudBlobClient();
 			  CloudBlobContainer container = serviceClient.getContainerReference(containerName);
 			  blob = container.getBlockBlobReference(blobName);
-			  return true;
+			  return blob.exists();
           } catch (Exception e) {
         	  System.out.print("Exception encountered: ");
               System.out.println(e.getMessage());

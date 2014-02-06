@@ -4,6 +4,7 @@ public class DisplayAlbum {
 	private int albumId;
 	private String title;
 	private String cover;
+	private boolean hasCover = false;
 	
 	public int getAlbumId() {
 		return albumId;
@@ -27,5 +28,13 @@ public class DisplayAlbum {
 	
 	public void setCover(String cover) {
 		this.cover = cover;
+	}
+
+	public boolean hasCover() {
+		return hasCover;
+	}
+
+	public void setHasCover(boolean hasCover) {
+		this.hasCover = hasCover;
 	}
 }
